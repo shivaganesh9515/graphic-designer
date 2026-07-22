@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-brand-cream: #f3efe0;
+  --color-brand-red: #e94e33;
+  --color-brand-blue: #005eb8;
+  --color-brand-green: #008f4c;
+  --color-brand-black: #1a1a1a;
+  --color-brand-yellow: #fdb913;
+  --font-display: "Anton", sans-serif;
+  --font-secondary: "Roboto Condensed", sans-serif;
+}
+
+:root {
+  --background: #f3efe0;
+  --foreground: #1a1a1a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fdb913;
+  color: #1a1a1a;
+  font-family: "Roboto Condensed", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scroll Reveal */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out,
+    transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: opacity, transform;
+}
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Header animations */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.header-animate-in {
+  animation: slideDown 0.8s ease-out forwards;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.logo-animate-in {
+  animation: popIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards;
+  opacity: 0;
+}
+
+/* Vertical text */
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* Menu dotted lines */
+.menu-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.menu-dots {
+  flex: 1;
+  border-bottom: 2px dotted rgba(0, 0, 0, 0.2);
+  margin: 0 10px;
+}
+
+/* Animated spin */
+@keyframes spin-slow {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+/* Gentle bounce */
+@keyframes bounce-gentle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+.animate-bounce-slow {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+/* Jagged right edge */
+.jagged-right-edge::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -10px;
+  width: 10px;
+  height: 100%;
+  background-size: 20px 20px;
+  background-image: linear-gradient(135deg, #008f4c 50%, transparent 50%),
+    linear-gradient(45deg, #008f4c 50%, transparent 50%);
+  background-repeat: repeat-y;
+  z-index: 20;
+}
